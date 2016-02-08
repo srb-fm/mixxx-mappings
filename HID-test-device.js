@@ -4,13 +4,12 @@ function testDevice() {
     this.controller = new HIDController();
 
     this.registerInputPackets = function() {
-        packet = new HIDPacket("control",[0x1,0x0,0x0],9);
-        packet.addControl("hid","keycode_1",3,"B");
-        packet.addControl("hid","keycode_2",4,"B");
-        packet.addControl("hid","keycode_3",5,"B");
-        packet.addControl("hid","keycode_4",6,"B");
-        packet.addControl("hid","keycode_5",7,"B");
-        packet.addControl("hid","keycode_6",8,"B");
+        packet = new HIDPacket("control",[],8);
+        packet.addControl("hid","BTN_TRIGGER",5,"B","31");
+	packet.addControl("hid","BTN_THUMB",5,"B","47");
+	packet.addControl("hid","BTN_THUMB2",5,"B","79");
+	packet.addControl("hid","BTN_TOP",5,"B","143");
+	packet.addControl("hid","BTN_TOP2",6,"B","1");
         this.controller.registerInputPacket(packet);
     }
 
@@ -22,20 +21,24 @@ function testDevice() {
 
     // Example to bind the bytes to a callback
     this.registerCallbacks = function() { 
-        this.controller.setCallback("control","hid","keycode_1",this.keyPress);
-        this.controller.setCallback("control","hid","keycode_2",this.keyPress);
-        this.controller.setCallback("control","hid","keycode_3",this.keyPress);
-        this.controller.setCallback("control","hid","keycode_4",this.keyPress);
-        this.controller.setCallback("control","hid","keycode_5",this.keyPress);
-        this.controller.setCallback("control","hid","keycode_6",this.keyPress);
+        this.controller.setCallback("control","hid","BTN_TRIGGER",this.keyPress);
+        this.controller.setCallback("control","hid","BTN_THUMB",this.keyPress);
+        this.controller.setCallback("control","hid","BTN_THUMB2",this.keyPress);
+        this.controller.setCallback("control","hid","BTN_TOP",this.keyPress);
+        this.controller.setCallback("control","hid","BTN_TOP2",this.keyPress);
     }
 
     // Example to do something with the joystik-button received
     this.keyPress = function(field) {
         if (field.value!=0) 
-            HIDDebug("KEY PRESS " + field.id + " CODE " + field.value);
+            HIDDebug("Button PRESS " + field.id + " CODE " + field.value);
+		if (field.value==31) 
+			HIDDebug("Button ...1 ................." );
+		if (field.value==47) 
+			HIDDebug("Button ...2 ................." );
         else
-            HIDDebug("KEY RELEASE " + field.id); 
+            HIDDebug("Button RELEASE " + field.id); 
+	
     }
 }
 
