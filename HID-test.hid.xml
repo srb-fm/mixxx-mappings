@@ -14,11 +14,5 @@
             <file filename="HID-test-device.js" functionprefix=""/>
             <file filename="HID-test.js" functionprefix="test"/>
         </scriptfiles>
-	<controls> <!-- One control group -->
-		<control> <!-- Several controls -->
-			<byteoffset>4</byteoffset>
-
-		</control>
-	</controls>
     </controller>
 </MixxxControllerPreset>
