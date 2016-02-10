@@ -47,10 +47,25 @@ function testDevice() {
 		//engine.setValue("[Channel1]","play",1);
 		//var status = (engine.getValue("[Channel1]","play")) ? false : true;
 		if (field.value==31 || field.value==47) 
-			engine.setValue(field.group,"play",1);
-
-		if (field.value==15) 
+			HIDDebug(":::::::::::::::::player push ON " );
+			//engine.setValue(field.group,"play",1);
+		else
+			return;
+			
+		var status = (engine.getValue(field.group,"play")) ? false : true;
+		if (!status) {
+			//HIDDebug(":::::::::::::::::player true " + field.group );
 			engine.setValue(field.group,"stop",1);
+			engine.setValue("[Playlist]","SelectNextTrack",1);
+			engine.setValue(field.group,"LoadSelectedTrack",1);
+		} else {
+			//HIDDebug(":::::::::::::::::player false " );
+			engine.setValue(field.group,"play",1);
+		//if (field.value==15) 
+			//engine.setValue(field.group,"stop",1);
+			//engine.setValue("[Playlist]","SelectNextTrack",1);
+			//engine.setValue(field.group,"LoadSelectedTrack",1);
+		}
     }
 
 	this.btnSampler = function(field) {
@@ -64,13 +79,14 @@ function testDevice() {
 
 		//var status = (engine.getValue("[Sampler1]","play")) ? false : true;
 		var status = (engine.getValue(field.group,"play")) ? false : true;
-		if (!status)
+		if (!status) {
 			//HIDDebug(":::::::::::::::::sampler true " );
 			//engine.setValue("[Sampler1]","stop",1);
 			engine.setValue(field.group,"stop",1);
-		else
+		} else {
 			//HIDDebug(":::::::::::::::::sampler false " );
 			//engine.setValue("[Sampler1]","play",1);
-			engine.setValue(field.group,"play",1);
+			engine.setValue(field.group,"start_play",1);
+		}
     }
 }
