@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="1.11+">
+    <info>
+        <name>DragonRise Generic USB Joystick</name>
+        <author>Joerg Sorge</author>
+        <description>HID Mapping for the Buttons of DragonRise USB Joystick</description>
+        <devices>
+            <product protocol="hid" vendor_id="0079" product_id="0006" />
+        </devices>
+    </info>
+    <controller id="DRJoystickButtons">
+        <scriptfiles>
+            <file filename="common-hid-packet-parser.js" functionprefix=""/>
+            <file filename="HID-DragonRise-Joystick-device.js" functionprefix=""/>
+            <file filename="HID-DragonRise-Joystick.js" functionprefix="DRJoystickButtons"/>
+        </scriptfiles>
+    </controller>
+</MixxxControllerPreset>
