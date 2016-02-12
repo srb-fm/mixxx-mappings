@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MixxxControllerPreset schemaVersion="1" mixxxVersion="1.11+">
+    <info>
+        <name>Speedlink Dark Tornado Joystick</name>
+        <author>Joerg Sorge</author>
+        <description>HID Mapping for the Buttons of Speedlink Dark Tornado Joystick</description>
+        <devices>
+            <product protocol="hid" vendor_id="1a34" product_id="0805" />
+        </devices>
+    </info>
+    <controller id="SDTJoystickButtons">
+        <scriptfiles>
+            <file filename="common-hid-packet-parser.js" functionprefix=""/>
+            <file filename="HID-Speedlink-Dark-Tornado-Joystick-device.js" functionprefix=""/>
+            <file filename="HID-Speedlink-Dark-Tornado-Joystick.js" functionprefix="SDTJoystickButtons"/>
+        </scriptfiles>
+    </controller>
+</MixxxControllerPreset>
